@@ -1,4 +1,4 @@
-package com.zalocoders.binding.ui
+package com.zalocoders.binding.ui.user
 
 import android.app.Activity
 import androidx.appcompat.app.AppCompatActivity

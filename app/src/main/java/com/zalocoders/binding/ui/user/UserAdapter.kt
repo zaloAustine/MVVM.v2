@@ -6,9 +6,10 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.zalocoders.binding.data.model.UserResponse
+import com.zalocoders.binding.data.model.UserResponseItem
 import com.zalocoders.binding.databinding.ListItemBinding
 
-class UserAdapter : ListAdapter<UserResponse, UserAdapter.ViewHolder>(UserDiffCallback()) {
+class UserAdapter : ListAdapter<UserResponseItem, UserAdapter.ViewHolder>(UserDiffCallback()) {
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val item = getItem(position)
@@ -21,8 +22,8 @@ class UserAdapter : ListAdapter<UserResponse, UserAdapter.ViewHolder>(UserDiffCa
 
     class ViewHolder private constructor(val binding: ListItemBinding) : RecyclerView.ViewHolder(binding.root){
 
-        fun bind(item: UserResponse) {
-            binding.tvTitle.text = item.iterator().next().title //bad way of doing things
+        fun bind(item: UserResponseItem) {
+            binding.tvTitle.text = item.title //bad way of doing things
             binding.executePendingBindings()
         }
 
@@ -37,15 +38,15 @@ class UserAdapter : ListAdapter<UserResponse, UserAdapter.ViewHolder>(UserDiffCa
 }
 
 
-class UserDiffCallback : DiffUtil.ItemCallback<UserResponse>() {
+class UserDiffCallback : DiffUtil.ItemCallback<UserResponseItem>() {
 
-    override fun areItemsTheSame(oldItem: UserResponse, newItem: UserResponse): Boolean {
+    override fun areItemsTheSame(oldItem: UserResponseItem, newItem: UserResponseItem): Boolean {
         return oldItem == newItem
     }
 
 
-    override fun areContentsTheSame(oldItem: UserResponse, newItem: UserResponse): Boolean {
-        return oldItem.iterator().next().id == newItem.iterator().next().id
+    override fun areContentsTheSame(oldItem: UserResponseItem, newItem: UserResponseItem): Boolean {
+        return oldItem.id == newItem.id
     }
 
 

@@ -5,7 +5,6 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
-import com.zalocoders.binding.data.model.UserResponse
 import com.zalocoders.binding.data.model.UserResponseItem
 import com.zalocoders.binding.databinding.ListItemBinding
 
@@ -23,7 +22,7 @@ class UserAdapter : ListAdapter<UserResponseItem, UserAdapter.ViewHolder>(UserDi
     class ViewHolder private constructor(val binding: ListItemBinding) : RecyclerView.ViewHolder(binding.root){
 
         fun bind(item: UserResponseItem) {
-            binding.tvTitle.text = item.title //bad way of doing things
+            binding.user = item
             binding.executePendingBindings()
         }
 
